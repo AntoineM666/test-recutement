@@ -15,8 +15,6 @@ class MovieType extends AbstractType
             ->add('name')
             ->add('gender')
             ->add('img')
-            ->add('createdAt')
-            ->add('updatedAt')
         ;
     }
 
