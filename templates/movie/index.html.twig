@@ -5,39 +5,30 @@
 {% block body %}{{ parent() }}
     <h1>Movie index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Gender</th>
-                <th>Img</th>
-                <th>CreatedAt</th>
-                <th>UpdatedAt</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
+    <div class="grid">
         {% for movie in movies %}
-            <tr>
-                <td>{{ movie.id }}</td>
-                <td>{{ movie.name }}</td>
-                <td>{{ movie.gender }}</td>
-                <td>{{ movie.img }}</td>
-                <td>{{ movie.createdAt ? movie.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ movie.updatedAt ? movie.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
-                    <a href="{{ path('movie_show', {'id': movie.id}) }}">show</a>
-                    <a href="{{ path('movie_edit', {'id': movie.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="7">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+       
+       
+        <div class="card">
 
+            <img src="https://via.placeholder.com/150" alt="Avatar" style="width:100%">
+            <div class="container">
+                <h4><b>{{ movie.name }}movie name</b></h4>
+                <h4><b>{{ movie.gender }}movie name</b></h4>
+                {{ movie.id }} {{ movie.img }}
+                <a href="{{ path('movie_show', {'id': movie.id}) }}">show</a>
+                <a href="{{ path('movie_edit', {'id': movie.id}) }}">edit</a>
+            </div>
+        </div> 
+
+
+
+
+        {% else %}
+          
+                <td colspan="7">no records found</td>
+            
+        {% endfor %}
+    </div>
     <a href="{{ path('movie_new') }}">Create new</a>
 {% endblock %}
