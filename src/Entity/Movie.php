@@ -2,11 +2,17 @@
 
 namespace App\Entity;
 
-use App\Repository\MovieRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\MovieRepository;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Vich\UploaderBundle\Mapping\Annotation\Uploadable;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+
 
 /**
  * @ORM\Entity(repositoryClass=MovieRepository::class)
+ * @Vich\Uploadable
  */
 class Movie
 {
@@ -16,6 +22,12 @@ class Movie
      * @ORM\Column(type="integer")
      */
     private $id;
+
+    /**
+     * @var File
+     * @Vich\UploadableField(mapping="movies", fileNameProperty="img")
+     */
+    private $imageFile;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -109,6 +121,30 @@ class Movie
     public function setUpdatedAt(\DateTimeImmutable $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of imageFile
+     *
+     * @return  File
+     */ 
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+
+    /**
+     * Set the value of imageFile
+     *
+     * @param  File  $imageFile
+     *
+     * @return  self
+     */ 
+    public function setImageFile(File $imageFile)
+    {
+        $this->imageFile = $imageFile;
 
         return $this;
     }
