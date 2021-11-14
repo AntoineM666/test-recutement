@@ -13,9 +13,10 @@
 
             <img src="https://via.placeholder.com/150" alt="Avatar" style="width:100%">
             <div class="container">
-                <h4><b>{{ movie.name }}movie name</b></h4>
-                <h4><b>{{ movie.gender }}movie name</b></h4>
-                {{ movie.id }} {{ movie.img }}
+                <h4><b>{{ movie.name }}</b></h4>
+                <h4><b>{{ movie.gender }}</b></h4>
+                {{ movie.id }} 
+                {{ movie.img }}
                 <a href="{{ path('movie_show', {'id': movie.id}) }}">show</a>
                 <a href="{{ path('movie_edit', {'id': movie.id}) }}">edit</a>
             </div>
