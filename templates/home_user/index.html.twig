@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ACWEBFLIX{% endblock %}
+
+{% block body %}{{ parent() }}
+    
+
+    <div class="grid">
+        {% for movie in movies %}
+       
+       
+        <div class="card">
+
+            <img src="{{ vich_uploader_asset(movie,'imageFile')  }}" alt="Avatar" style="width:100%">
+            <div class="container">
+                <h4><b>{{ movie.name }}</b></h4>
+                <h4><b>{{ movie.gender }}</b></h4>
+              
+               
+                <a href="{{ path('home_show', {'id': movie.id}) }}">show</a>
+            
+            </div>
+        </div> 
+
+
+
+
+        {% else %}
+          
+                <td colspan="7">no records found</td>
+            
+        {% endfor %}
+    </div>
+    <a href="{{ path('movie_new') }}">Create new</a>
+{% endblock %}

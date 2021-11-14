@@ -5,31 +5,49 @@
 {% block body %}{{ parent() }}
     <h1>Movie index</h1>
 
-    <div class="grid">
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>img</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
         {% for movie in movies %}
-       
-       
-        <div class="card">
-
-            <img src="{{ vich_uploader_asset(movie,'imageFile')  }}" alt="Avatar" style="width:100%">
-            <div class="container">
-                <h4><b>{{ movie.name }}</b></h4>
-                <h4><b>{{ movie.gender }}</b></h4>
-                {{ movie.id }} 
-               
-                <a href="{{ path('movie_show', {'id': movie.id}) }}">show</a>
-                <a href="{{ path('movie_edit', {'id': movie.id}) }}">edit</a>
-            </div>
-        </div> 
-
-
-
-
+            <tr>
+                <td>{{ movie.id }}</td>
+                <td>{{movie.name }}</td>
+                <td>{{ movie.gender}}</td>
+                <td>{{ movie.img}}</td>
+                <td>
+                    <a href="{{ path('movie_show', {'id': movie.id}) }}">show</a>
+                    <a href="{{ path('movie_edit', {'id': movie.id}) }}">edit</a>
+                </td>
+            </tr>
         {% else %}
-          
-                <td colspan="7">no records found</td>
-            
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
         {% endfor %}
-    </div>
-    <a href="{{ path('movie_new') }}">Create new</a>
+        </tbody>
+    </table>
+
+    <a href="{{ path('user_new') }}">Create new</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
 {% endblock %}
