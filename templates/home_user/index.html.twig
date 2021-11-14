@@ -3,33 +3,58 @@
 {% block title %}ACWEBFLIX{% endblock %}
 
 {% block body %}{{ parent() }}
-    
 
-    <div class="grid">
-        {% for movie in movies %}
-       
-       
-        <div class="card">
 
-            <img src="{{ vich_uploader_asset(movie,'imageFile')  }}" alt="Avatar" style="width:100%">
-            <div class="container">
-                <h4><b>{{ movie.name }}</b></h4>
-                <h4><b>{{ movie.gender }}</b></h4>
-              
-               
-                <a href="{{ path('home_show', {'id': movie.id}) }}">show</a>
+<div class="grid">
+    {% for movie in movies %}
+
+
+    <div class="card">
+
+        <img src="{{ vich_uploader_asset(movie,'imageFile')  }}" alt="Avatar" style="width:100%">
+        <div class="container">
+            <h4><b>{{ movie.name }}</b></h4>
+
             
+            <button class="myBtn_multi">Open Modal</button>
+            
+
+            <!-- The Modal -->
+            <div class="modal modal_multi">
+
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close close_multi">×</span>
+                    <h3>{{ movie.id }}</h3></td>
+                    <h3>{{movie.name }}</h3></td>
+                    <h3>{{ movie.gender}}</h3>
+                    <h3>{{ movie.img}}</h3>
+                    <h2>Date de creation</h2>
+                    <h3>{{ movie.createdAt ? movie.createdAt|date('Y-m-d H:i:s') : '' }}</h3> 
+                    <h2>Date de mdification</h2>
+                    <h3>{{ movie.updatedAt ? movie.updatedAt|date('Y-m-d H:i:s') : '' }}</h3>
+             
+
+
+                </div>
+
             </div>
-        </div> 
 
+        
 
-
-
-        {% else %}
-          
-                <td colspan="7">no records found</td>
-            
-        {% endfor %}
     </div>
-    <a href="{{ path('movie_new') }}">Create new</a>
+</div>
+
+
+
+
+{% else %}
+
+<td colspan="7">no records found</td>
+
+{% endfor %}
+</div>
+{% block javascripts %}
+<script src="{{ asset('js/script.js') }}"></script>
+{% endblock %}
 {% endblock %}

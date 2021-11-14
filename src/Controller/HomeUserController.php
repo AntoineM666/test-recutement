@@ -20,12 +20,6 @@ class HomeUserController extends AbstractController
     }
 
    
-    #[Route('/{id}', name: 'home_show', methods: ['GET'])]
-    public function show(Movie $movie): Response
-    {
-        return $this->render('home_user/showmovie.html.twig', [
-            'movie' => $movie,
-        ]);
-    }
+ 
    
 }
