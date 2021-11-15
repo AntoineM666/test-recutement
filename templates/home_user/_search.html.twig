@@ -1,0 +1,7 @@
+{% if app.request.method != 'POST' %}
+{{form_start(form)}}
+{{form_widget(form.query)}}
+{{ form_widget(form) }}
+    
+{{ form_end(form) }}
+{% endif %}

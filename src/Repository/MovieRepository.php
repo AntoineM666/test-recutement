@@ -19,6 +19,25 @@ class MovieRepository extends ServiceEntityRepository
         parent::__construct($registry, Movie::class);
     }
 
+    public function findArticlesByName(string $query)
+    {
+        $qb = $this->createQueryBuilder('p');
+        $qb
+            ->where(
+                $qb->expr()->andX(
+                    $qb->expr()->orX(
+                        $qb->expr()->like('p.name', ':query'),
+                       
+                    ),
+                    
+                )
+            )
+            ->setParameter('query', '%' . $query . '%')
+        ;
+        return $qb
+            ->getQuery()
+            ->getResult();
+    }
     // /**
     //  * @return Movie[] Returns an array of Movie objects
     //  */

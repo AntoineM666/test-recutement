@@ -1,7 +1,7 @@
 
 
 body{
-  background-color: antiquewhite;
+  background-color: rgba(255, 244, 244, 0.788);
 }
 
 .grid{
@@ -54,7 +54,7 @@ body{
 {
 	width:68px;
 	height:48px;
-	background:#333 url(img/search_icon_sprite.png) no-repeat ;
+	background:rgb(22, 22, 22) url(img/search_icon_sprite.png) no-repeat ;
 }
 
 /*Admin navigation*/
@@ -127,4 +127,11 @@ body{
     color: #000;
     text-decoration: none;
     cursor: pointer;
+  }
+  
+
+  /*Autocomplete search bar*/
+  li{
+    list-style: none;
+   
   }

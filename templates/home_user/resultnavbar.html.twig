@@ -1,14 +1,14 @@
-
-
 {% extends 'base.html.twig' %}
+
 {% block title %}ACWEBFLIX{% endblock %}
 
+
 {% block body %}
-{# {{ render(controller(
-        'App\\Controller\\HomeUserController::searchBar'
- )) }} #}
+ 
+ 
 
-
+{% if app.request.method == 'POST' %}
+            
 <div class="grid">
     {% for movie in movies %}
 
@@ -58,7 +58,7 @@
 
 {% endfor %}
 </div>
-{% block javascripts %}
-<script src="{{ asset('js/script.js') }}"></script>
-{% endblock %}
+
+ {% endif %}       
+
 {% endblock %}
