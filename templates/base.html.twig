@@ -16,7 +16,7 @@
 </head>
  {% if is_granted('ROLE_ADMIN') %}
     <div class="topnav">
-        <a class="active" href="#home">Home</a>
+        <a class="active" href="{{ path('home_user') }}">Home</a>
         <a href="{{ path('user_index') }}">Crud user</a>
         <a href="{{ path('movie_index') }}">crud movies</a>
     </div>
@@ -26,12 +26,7 @@
     {% else %}
     <a href="{{ path('app_login') }}">se connecter</a>
     {% endif %}
-    <form id="jq_search">
-        <input type="search" placeholder="Recherche" class="input" /><button type="submit">Search</button>
-        <ul id="autocomplete-results">
-        </ul>
-
-    </form>
+    
     
      
         

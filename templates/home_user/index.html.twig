@@ -4,14 +4,16 @@
 {% block title %}ACWEBFLIX{% endblock %}
 
 {% block body %}
-{# {{ render(controller(
-        'App\\Controller\\HomeUserController::searchBar'
- )) }} #}
 
-
+<form id="jq_search">
+        {{ render(controller('App\\Controller\\HomeUserController::searchBar')) }} 
+        <ul id="autocomplete-results">
+        </ul>
+        
+    </form>
 <div class="grid">
     {% for movie in movies %}
-
+    
 
     <div class="card">
 
